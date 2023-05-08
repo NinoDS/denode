@@ -1,0 +1,22 @@
+{
+  "name": "untitled24",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "mod.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "missing-dom-events": "^1.0.0",
+    "node-fetch": "^3.3.1",
+    "typescript": "^5.0.4",
+    "websocket": "^1.0.34"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.3"
+  }
+}
