@@ -135,13 +135,13 @@ export class DenoRunner {
 		const referencingModuleURL = referencingModule.identifier;
 		specifier = new URL(specifier, referencingModuleURL).href;
 
-		if (moduleCache.has(specifier)) {
-			return moduleCache.get(specifier);
+		if (this.#moduleCache.has(specifier)) {
+			return this.#moduleCache.get(specifier);
 		}
 
 		let source;
 		if (specifier.startsWith('https://') || specifier.startsWith('http://')) {
-			const cachePath = createCachePath(specifier);
+			const cachePath = this.#createCachePath(specifier);
 			const cacheExists = await fs.promises.access(cachePath).then(() => true).catch(() => false);
 
 			if (cacheExists) {
@@ -176,7 +176,7 @@ export class DenoRunner {
 			}
 		});
 
-		moduleCache.set(specifier, module);
+		this.#moduleCache.set(specifier, module);
 
 		return module;
 	}
