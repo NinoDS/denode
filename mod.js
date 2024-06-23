@@ -141,7 +141,7 @@ export class DenoRunner {
 
 		let source;
 		if (specifier.startsWith('https://') || specifier.startsWith('http://')) {
-			const cachePath = this.#createCachePath(specifier);
+			const cachePath = DenoRunner.#createCachePath(specifier);
 			const cacheExists = await fs.promises.access(cachePath).then(() => true).catch(() => false);
 
 			if (cacheExists) {
@@ -182,7 +182,7 @@ export class DenoRunner {
 	}
 
 	async #link() {
-		await this.#module.link(this.#linker);
+		await this.#module.link(this.#linker.bind(this));
 	}
 
 	async run() {
